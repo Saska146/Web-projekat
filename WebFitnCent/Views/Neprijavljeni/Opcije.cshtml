@@ -1,0 +1,26 @@
+﻿@using WebFitnCent.Models
+
+<link href="~/Css/Opcije.css" rel="stylesheet" type="text/css" />
+<h1>Opcije</h1>
+
+<div>
+    <a href="~/Neprijavljeni/SviFitnesCentri">Fitnes Centri</a>
+    <a href="~/PrijavaRegistracija/Prijava">Vec imate Nalog?</a>
+    <a href="~/PrijavaRegistracija/Registracija">Nemate Nalog? Registrujte se</a>
+    @if(ViewData["uloga"] == null)
+    {
+
+    }
+    else if (ViewData["uloga"].ToString() == "POSETILAC")
+    {
+        <a href="~/Posetilac/Opcije">Dodatne Opcije</a>
+    }
+    else if (ViewData["uloga"].ToString() == "TRENER")
+    {
+        <a href="~/Trener/Opcije">Dodatne Opcije</a>
+    }
+    else if (ViewData["uloga"].ToString() == "VLASNIK")
+    {
+        <a href="~/Vlasnik/Opcije">Dodatne Opcije</a>
+    }
+</div>

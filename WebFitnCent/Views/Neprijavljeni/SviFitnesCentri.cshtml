@@ -1,0 +1,99 @@
+﻿@using WebFitnCent.Models
+
+
+<link href="~/Css/PregledSortIPretraga.css" rel="stylesheet" type="text/css" />
+
+<div class="container">
+    <h1>Pogledaj Svoje Fitnes Centre</h1>
+    <a href="~/Neprijavljeni/Opcije">Povratak na Opcije</a>
+    <div>
+        <div>
+            Id
+        </div>
+        <div>
+            Naziv
+        </div>
+        <div>
+            Adresa
+        </div>
+        <div>
+            Godina Otvaranja
+        </div>
+    </div>
+    @foreach (var item in (List<FitnesCentar>)ViewData["fitnesCentriZaPrikaz"])
+    {
+        <div>
+            <div>
+                @item.Id
+            </div>
+            <div>
+                @item.Naziv
+            </div>
+            <div>
+                @item.Adresa
+            </div>
+            <div>
+                @item.Godina_otvaranja
+            </div>
+            <div>
+                <form method="post" action="~/Neprijavljeni/DetaljnijiPrikaz">
+                    <input type="submit" id="submit" value="Detalji" />
+                    <input type="hidden" value="@item.Id" name="id" />
+                </form>
+            </div>
+        </div>
+    }
+
+</div>
+
+
+<div class="container">
+    <h1>Sortira</h1>
+    <div>
+        <div>
+            <form action="~/Neprijavljeni/Sortiraj" method="post">
+                <div>
+                    <select name="sta">
+                        <option value="Nazivu">Naziv</option>
+                        <option value="Adresi">Adresi</option>
+                        <option value="Godini">Godini Otvaranja</option>
+                    </select>
+                </div>
+                <div>
+                    <select name="vrsta">
+                        <option value="Rastuce">Rastuce</option>
+                        <option value="Opadajuce">Opadajuce</option>
+                    </select>
+                </div>
+                <div>
+                    <input type="submit" id="submit" value="Odaberi">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container">
+    <h1>Pretrazuje</h1>
+    <div>
+        <div>
+            <form action="~/Neprijavljeni/Pretrazi" method="post">
+                <div>
+                    <input type="text" name="nzv" placeholder="Pretraga Po Nazivu" id="polje" />
+                </div>
+                <div>
+                    <input type="text" name="adr" placeholder="Pretraga Po Adresi" id="polje" />
+                </div>
+                <div>
+                    <input type="number" name="godinaminimum" placeholder="Pretraga Po Minimalnoj Godini" id="polje" />
+                    <input type="number" name="godinamaksimum" placeholder="Pretraga Po Maksimalnom Godini" id="polje" />
+                </div>
+                <div>
+                    <input type="submit" id="submit" value="Odaberi">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

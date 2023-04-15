@@ -1,0 +1,78 @@
+﻿
+body {
+    background: url('https://wallpaperaccess.com/full/2465431.jpg') no-repeat fixed center center;
+    font-family: Georgia;
+    background-size: cover;
+}
+
+
+.container {
+    width: auto;
+    padding: 30px;
+    background-color: papayawhip;
+    margin: 15px auto;
+    display: table;
+    font-family: 'Berlin Sans FB';
+    text-align: center;
+}
+
+    .container > div {
+        display: table-row;
+    }
+
+        .container > div > div {
+            display: table-cell;
+            padding: 5px;
+            border: solid;
+        }
+
+p#greska {
+    font-size: 14px;
+    color: red;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 19px;
+    font-size: 20px;
+}
+
+a {
+    text-align: center;
+    display: block;
+    margin-bottom: 10px;
+    font-size: 17px;
+}
+
+p {
+    text-align: center
+}
+
+select {
+    font-size: 17px;
+    margin: 4px;
+    text-align: center;
+    display: block;
+}
+
+
+input#polje {
+    box-sizing: border-box;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    padding: 0 12px 0 12px;
+    margin-bottom: 12px;
+    font-size: 19px;
+    outline: none;
+    width: 90%;
+    height: 30px;
+}
+
+input#submit {
+    width: 100%;
+    height: 40px;
+    font-weight: bold;
+    font-size: 17px;
+    background: #ff656c;
+    cursor: pointer;
+}

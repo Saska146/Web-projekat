@@ -1,0 +1,71 @@
+﻿@using WebFitnCent.Models
+
+
+<link href="~/Css/Pregled.css" rel="stylesheet" type="text/css" />
+
+<div class="container">
+    <a href="~/Neprijavljeni/Opcije">Povratak na Opcije</a>
+    <h1>Pogledaj Svoje Fitnes Centre</h1>
+    <div>
+        <div>
+            Id
+        </div>
+        <div>
+            Naziv
+        </div>
+        <div>
+            Adresa
+        </div>
+        <div>
+            Godina Otvaranja
+        </div>
+        <div>
+            Mesecna Clanarina
+        </div>
+        <div>
+            Godisnja Clanarina
+        </div>
+        <div>
+            Obican Trening
+        </div>
+        <div>
+            Grupni Trening
+        </div>
+        <div>
+            Personalni Trening
+        </div>
+    </div>
+    @foreach (var item in (List<FitnesCentar>)ViewData["lista_fitnes_centara"])
+    {
+        <div>
+            <div>
+                @item.Id
+            </div>
+            <div>
+                @item.Naziv
+            </div>
+            <div>
+                @item.Adresa
+            </div>
+            <div>
+                @item.Godina_otvaranja
+            </div>
+            <div>
+                @item.Cena_mesecne
+            </div>
+            <div>
+                @item.Cena_godisnje
+            </div>
+            <div>
+                @item.Cena_jednog
+            </div>
+            <div>
+                @item.Cena_grupnog
+            </div>
+            <div>
+                @item.Cena_personalnog
+            </div>
+        </div>
+    }
+
+</div>

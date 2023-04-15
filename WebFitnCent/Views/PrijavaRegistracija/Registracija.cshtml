@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Registracija";
+}
+@using WebFitnCent.Models
+<link href="~/Css/PrijavaRegistracija.css" rel="stylesheet" type="text/css" />
+
+<div class="login-block">
+    <h1>Registruj se</h1>
+    <p id="greska">@ViewData["Greska"]</p>
+    @if ((List<FitnesCentar>)ViewData["fitnes_centri"] != null && ((List<FitnesCentar>)ViewData["fitnes_centri"]).Count == 0)
+    {
+        <p>Nije Mogce Dodati Trenera Jer Nema Fitnes Centara</p>
+    }
+    else
+    {
+        <a href="~/PrijavaRegistracija/Prijava">Vec imate Nalog?</a>
+        <a href="~/Neprijavljeni/Opcije">Povratak na Opcije</a>
+        <form method="post" action="~/PrijavaRegistracija/RegistrujSe">
+            <input type="text" name="kime" placeholder="Korisnicko Ime" id="polje" required />
+            <input type="password" name="sifra" placeholder="Sifra" id="polje" required />
+            <input type="text" name="ime" placeholder="Ime" id="polje" required />
+            <input type="text" name="prezime" placeholder="Prezime" id="polje" required />
+            <label>Pol:</label>
+            <input type="radio" name="pol" value="Muski" checked>
+            <label>M</label>
+            <input type="radio" name="pol" value="Zenski">
+            <label>Z</label><br><br />
+            <input type="email" name="email" placeholder="Email" id="polje" required />
+            <input type="date" name="datum" placeholder="Datum Rodjenja" id="polje" required />
+
+            @if (ViewData["uloga"] == "TRENER")
+            {
+                <input type="hidden" value="TRENER" name="uloga" />
+                foreach (var fitnesCentar in (List<FitnesCentar>)ViewData["fitnesCentriZaPrikaz"])
+                {
+                    <input type="radio" name="id_fitnes_centra" value="@fitnesCentar.Id" checked>
+                    <label>@fitnesCentar.Naziv</label><br />
+                }
+            }
+            else
+            {
+                <input type="hidden" value="POSETILAC" name="uloga" />
+
+            }
+
+            <input type="submit" id="submit" value="Registruj Se">
+        </form>
+    }
+
+</div>

@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "OdaberiGrupniTrening";
+}
+@using WebFitnCent.Models
+
+<link href="~/Css/PrijavaRegistracija.css" rel="stylesheet" type="text/css" />
+<div class="login-block">
+
+    <a href="~/Neprijavljeni/Opcije">Povratak na Opcije</a>
+    <h1>Modifikuj Grupni Trening</h1>
+    @if (((List<GrupniTrening>)ViewData["grupniTreninziZaPrikaz"]).Count == 0)
+    {
+    <p>Trenutna Nemate Nijedan Grupni Trening</p>
+    }
+    else
+    {
+        <form method="post" action="~/Trener/Modifikuj">
+            <select name="id">
+                @foreach (var item in (List<GrupniTrening>)ViewData["grupniTreninziZaPrikaz"])
+                {
+                    <option value="@item.Id">@item.Naziv</option>
+
+                }
+            </select>
+            <input type="submit" id="submit" value="Odaberi Grupni Trening">
+        </form>
+        <form method="post" action="~/Trener/Izbrisi">
+            <h1>Obrisi Grupni Trening</h1>
+            <select name="id">
+                @foreach (var item in (List<GrupniTrening>)ViewData["grupniTreninziZaPrikaz"])
+                {
+                    <option value="@item.Id">@item.Naziv</option>
+
+                }
+            </select>
+            <input type="submit" id="submit" value="Odaberi Grupni Trening">
+        </form>
+    }
+
+</div>
+

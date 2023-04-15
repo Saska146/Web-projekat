@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Kreiraj";
+}
+<link href="~/Css/PrijavaRegistracija.css" rel="stylesheet" type="text/css" />
+
+<div class="login-block">
+    <h1>Kreiraj Komentar</h1>
+    <a href="~/Neprijavljeni/Opcije">Povratak na Opcije</a>
+    <form method="post" action="~/Posetilac/Komentarisi">
+        <input type="text" name="tks" placeholder="Tekst Komentara" id="polje" required />
+        <input type="number" name="ocn" min="1" max="5" placeholder="Ocena Fitnes Centra" id="polje" required />
+        <input type="hidden" value="@ViewData["id"]" name="id" />
+        <input type="submit" id="submit" value="Dodaj Komentar">
+    </form>
+</div>

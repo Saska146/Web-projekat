@@ -1,0 +1,117 @@
+﻿@using WebFitnCent.Models
+
+
+<link href="~/Css/PregledSortIPretraga.css" rel="stylesheet" type="text/css" />
+@{UCPomocna upis_citanje = new UCPomocna(); }
+<div class="container">
+    <a href="~/Neprijavljeni/Opcije">Povratak na Opcije</a>
+    <h1>Pogledaj Svoje Grupne Treninge</h1>
+    <div>
+        <div>
+            Id
+        </div>
+        <div>
+            Naziv
+        </div>
+        <div>
+            Tip Treninga
+        </div>
+        <div>
+            Fitnes Centar
+        </div>
+        <div>
+            Trajanje Treninga
+        </div>
+        <div>
+            Datum i Vreme Treninga
+        </div>
+        <div>
+            Maksimalan Broj Posetilaca
+        </div>
+    </div>
+    @foreach (var item in (List<GrupniTrening>)ViewData["GrupniTreninziZaPrikaz"])
+    {
+        <div>
+            <div>
+                @item.Id
+                
+            </div>
+            <div>
+                @item.Naziv
+            </div>
+            <div>
+                @item.Tip_treninga
+            </div>
+            <div>
+                @upis_citanje.UcitajFitnesCentre().First(fcnt => fcnt.Id == item.Fitnes_centar).Naziv
+
+            </div>
+            <div>
+                @item.Trajanje_treninga
+            </div>
+            <div>
+                @item.Datum_i_vreme_treninga
+            </div>
+            <div>
+                @item.Maksimalan_broj_posetilaca
+            </div>
+            <div>
+                <form method="post" action="~/Posetilac/Kreiraj">
+                    <input type="submit" id="submit" value="Komentarisi" />
+                    <input type="hidden" value="@item.Id" name="id" />
+                </form>
+            </div>
+        </div>
+    }
+
+</div>
+
+
+<div class="container">
+    <h1>Sortira</h1>
+    <div>
+        <div>
+            <form action="~/Posetilac/Sortiraj" method="post">
+                <div>
+                    <select name="sta">
+                        <option value="Nazivu">Naziv</option>
+                        <option value="Tipu">Tip Treninga</option>
+                        <option value="Datumu">Datum i Vreme Odrzavanja</option>
+                    </select>
+                </div>
+                <div>
+                    <select name="vrsta">
+                        <option value="Rastuce">Rastuce</option>
+                        <option value="Opadajuce">Opadajuce</option>
+                    </select>
+                </div>
+                <div>
+                    <input type="submit" id="submit" value="Odaberi">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <h1>Pretrazuje</h1>
+    <div>
+        <div>
+            <form action="~/Posetilac/Pretrazi" method="post">
+                <div>
+                    <input type="text" name="nzv" placeholder="Pretraga Po Nazivu" id="polje" />
+                </div>
+                <div>
+                    <input type="text" name="tip" placeholder="Pretraga Po Tipu" id="polje" />
+                </div>
+                <div>
+                    <input type="text" name="nzv_fc" placeholder="Pretraga Po Nazivu Fitnes Centra" id="polje" />
+                </div>
+                <div>
+                    <input type="submit" id="submit" value="Odaberi">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

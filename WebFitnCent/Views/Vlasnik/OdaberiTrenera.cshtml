@@ -1,0 +1,29 @@
+﻿
+
+@using WebFitnCent.Models
+
+<link href="~/Css/PrijavaRegistracija.css" rel="stylesheet" type="text/css" />
+<div class="login-block">
+
+    <a href="~/Neprijavljeni/Opcije">Povratak na Opcije</a>
+    <form method="post" action="~/Vlasnik/BlokirajTrenera">
+        <h1>Blokiraj Trenera</h1>
+        @if (((List<Korisnik>)ViewData["lista_trenera"]).Count == 0)
+        {
+            <p>Trenutna Nemate Nijednog Trenera u Vasim Fitnes Centrima</p>
+        }
+        else
+        {
+            <select name="trener">
+
+                @foreach (var item in (List<Korisnik>)ViewData["lista_trenera"])
+                {
+                    <option value="@item.Korisnicko_ime">@item.Korisnicko_ime</option>
+                }
+            </select>
+        }
+
+        <input type="submit" id="submit" value="Odaberi Trenera">
+    </form>
+</div>
+

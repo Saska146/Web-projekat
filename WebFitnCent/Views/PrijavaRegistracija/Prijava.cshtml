@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Prijava";
+}
+
+<link href="~/Css/PrijavaRegistracija.css" rel="stylesheet" type="text/css" />
+
+
+
+<div class="login-block">
+    <h1>Prijava</h1>
+    <p id="greska">@ViewData["Greska"]</p>
+    <a href="~/PrijavaRegistracija/Registracija">Nemate Nalog? Registrujte se</a>
+    <a href="~/Neprijavljeni/Opcije">Povratak na Opcije</a>
+    <form method="post" action="~/PrijavaRegistracija/PrijaviSe">
+        <input type="text" name="kime" placeholder="Korisnicko Ime" id="username" required />
+        <input type="password" name="sifra" placeholder="Sifra" id="password" required />
+        <input type="submit" id="submit" value="Prijavi Se">
+    </form>
+</div>

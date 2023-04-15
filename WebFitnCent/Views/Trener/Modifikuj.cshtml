@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Modifikuj";
+}
+
+<link href="~/Css/PrijavaRegistracija.css" rel="stylesheet" type="text/css" />
+
+<div class="login-block">
+    <h1>Grupni Trening</h1>
+    <p id="greska">@ViewData["Greska"]</p>
+    <a href="~/Neprijavljeni/Opcije">Povratak na Opcije</a>
+    <form method="post" action="~/Trener/Modifikacija">
+        <input type="text" value="@ViewData["id"]" readonly name="id" id="polje" />
+        <input type="text" name="nzv" placeholder="Naziv" id="polje" />
+        <input type="text" name="tip" placeholder="Tip Treninga" id="polje" />
+        <input type="number" name="trajanje" placeholder="Trajanje Treninga" id="polje" />
+
+        <input type="datetime-local" name="datumivr" placeholder="Datum i Vreme" id="polje" />
+        <input type="number" name="makspos" placeholder="Maksimalan Broj Posetilaca" id="polje" />
+
+        <input type="submit" id="submit" value="Modifikacija">
+    </form>
+</div>

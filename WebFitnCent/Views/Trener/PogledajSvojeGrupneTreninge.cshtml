@@ -1,0 +1,78 @@
+﻿@using WebFitnCent.Models
+
+
+<link href="~/Css/Pregled.css" rel="stylesheet" type="text/css" />
+
+<div class="container">
+    <a href="~/Neprijavljeni/Opcije">Povratak na Opcije</a>
+    <h1>Pogledaj Svoje Grupne Treninge</h1>
+    <div>
+        <div>
+            Id
+        </div>
+        <div>
+            Naziv
+        </div>
+        <div>
+            Tip Treninga
+        </div>
+        <div>
+            Fitnes Centar
+        </div>
+        <div>
+            Trajanje Treninga
+        </div>
+        <div>
+            Datum i Vreme Treninga
+        </div>
+        <div>
+            Maksimalan Broj Posetilaca
+        </div>
+        <div>
+            Posetioci
+        </div>
+    </div>
+    @foreach (var item in (List<GrupniTrening>)ViewData["lista_grupnih_treninga"])
+    {
+        <div>
+            <div>
+                @item.Id
+            </div>
+            <div>
+                @item.Naziv
+            </div>
+            <div>
+                @item.Tip_treninga
+            </div>
+            <div>
+                @item.Fitnes_centar
+            </div>
+            <div>
+                @item.Trajanje_treninga
+            </div>
+            <div>
+                @item.Datum_i_vreme_treninga
+            </div>
+            <div>
+                @item.Maksimalan_broj_posetilaca
+            </div>
+            <div>
+                @if (item.Spisak_posetilaca.Count == 0)
+                {
+                    <p>Trenutna Nemate Nijednog Posetioca</p>
+                }
+                else
+                {
+                    <select>
+
+                        @foreach (var pos in item.Spisak_posetilaca)
+                        {
+                            <option>@pos</option>
+                        }
+                    </select>
+                }
+            </div>
+        </div>
+    }
+
+</div>

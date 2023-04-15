@@ -1,0 +1,69 @@
+﻿@using WebFitnCent.Models
+
+
+<link href="~/Css/Pregled.css" rel="stylesheet" type="text/css" />
+
+<div class="container">
+    <a href="~/Neprijavljeni/Opcije">Povratak na Opcije</a>
+    <h1>Pogledaj Svoje Grupne Treninge</h1>
+    <div>
+        <div>
+            Id
+        </div>
+        <div>
+            Korisnicko Ime Posetionca
+        </div>
+        <div>
+            Id Fitnes Centar Za Koji Se Vezuje Komentar
+        </div>
+        <div>
+            Tekst
+        </div>
+        <div>
+            Ocena
+        </div>
+        <div>
+            Vidljivost
+        </div>
+    </div>
+    @foreach (var item in (List<Komentar>)ViewData["komentariZaPrikaz"])
+    {
+        <div>
+            <div>
+                @item.Id
+            </div>
+            <div>
+                @item.Posetilac_korisnicko
+            </div>
+            <div>
+                @item.Fitnes_Centar_id
+            </div>
+            <div>
+                @item.Tekst_komentara
+            </div>
+            <div>
+                @item.Ocena
+            </div>
+            <div>
+                @if (item.Vidljiv == true)
+                {
+                    @:Da
+                }
+                else
+                {
+                    @:Ne
+                }
+            </div>
+            <div>
+                <form action="~/Vlasnik/VidljivostKomentara" method="post">
+                    <select name="odabir">
+                        <option value="vid">Vidljiv</option>
+                        <option value="nevid">Nevidljiv</option>
+                    </select>
+                    <input type="hidden" value="@item.Id" name="id" />
+                    <input type="submit" id="submit" value="Odaberi">
+                </form>             
+            </div>
+        </div>
+    }
+</div>

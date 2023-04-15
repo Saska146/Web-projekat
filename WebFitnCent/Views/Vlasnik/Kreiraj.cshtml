@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Kreiraj";
+}
+<link href="~/Css/PrijavaRegistracija.css" rel="stylesheet" type="text/css" />
+
+<div class="login-block">
+    <h1>Kreiraj Fitnes Trening</h1>
+    <p id="greska">@ViewData["Greska"]</p>
+    <a href="~/Neprijavljeni/Opcije">Povratak na Opcije</a>
+    <form method="post" action="~/Vlasnik/Dodaj">
+        <input type="text" name="nzv" placeholder="Naziv" id="polje" required />
+        <input type="text" name="adresa" placeholder="Adresa" id="polje" required />
+        <input type="date" name="god_otv" placeholder="Godina Otvaranja" id="polje" required />
+
+        <input type="number" name="mesecna" placeholder="Cena Mesecne Clanarine" id="polje" required />
+        <input type="number" name="godisnja" placeholder="Cena Godisnje Clanarine" id="polje" required />
+        <input type="number" name="jednog" placeholder="Cena Jednog Treninga" id="polje" required />
+        <input type="number" name="grupnog" placeholder="Cena Grupnog Treninga" id="polje" required />
+        <input type="number" name="personalni" placeholder="Cena Personalnog Treninga" id="polje" required />
+
+
+        <input type="submit" id="submit" value="Dodaj Fitnes Centar">
+    </form>
+</div>

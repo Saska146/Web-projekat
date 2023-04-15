@@ -1,0 +1,150 @@
+﻿@using WebFitnCent.Models
+
+
+<link href="~/Css/PregledSortIPretraga.css" rel="stylesheet" type="text/css" />
+
+<div class="container">
+    <h1>Detaljan Prikaz Fintnes Centra</h1>
+    <a href="~/Neprijavljeni/Opcije">Povratak na Opcije</a>
+    @{
+        var FitnesCentar = (FitnesCentar)ViewData["OdabraniFitnesCentar"];
+    }
+    <div>
+        <div>
+            Id
+        </div>
+        <div>
+            Naziv
+        </div>
+        <div>
+            Adresa
+        </div>
+        <div>
+            Godina Otvaranja
+        </div>
+        <div>
+            Mesecna Clanarina
+        </div>
+        <div>
+            Godisnja Clanarina
+        </div>
+        <div>
+            Obican Trening
+        </div>
+        <div>
+            Grupni Trening
+        </div>
+        <div>
+            Personalni Trening
+        </div>
+    </div>
+    <div>
+        <div>
+            @FitnesCentar.Id
+        </div>
+        <div>
+            @FitnesCentar.Naziv
+        </div>
+        <div>
+            @FitnesCentar.Adresa
+        </div>
+        <div>
+            @FitnesCentar.Godina_otvaranja
+        </div>
+        <div>
+            @FitnesCentar.Cena_mesecne
+        </div>
+        <div>
+            @FitnesCentar.Cena_godisnje
+        </div>
+        <div>
+            @FitnesCentar.Cena_jednog
+        </div>
+        <div>
+            @FitnesCentar.Cena_grupnog
+        </div>
+        <div>
+            @FitnesCentar.Cena_personalnog
+        </div>
+    </div>
+
+</div>
+
+<div class="container">
+    <h1>Detaljan Prikaz Grupnih Treninga</h1>
+    <div>
+        <div>
+            Id
+        </div>
+        <div>
+            Naziv
+        </div>
+        <div>
+            Tip Treninga
+        </div>
+        <div>
+            Fitnes Centar
+        </div>
+        <div>
+            Trajanje Treninga
+        </div>
+        <div>
+            Datum i Vreme Treninga
+        </div>
+        <div>
+            Maksimalan Broj Posetilaca
+        </div>
+        <div>
+            Posetioci
+        </div>
+    </div>
+    @foreach (var item in (List<GrupniTrening>)ViewData["GrupniTreninziZaPrikaz"])
+    {
+        <div>
+            <div>
+                @item.Id
+            </div>
+            <div>
+                @item.Naziv
+            </div>
+            <div>
+                @item.Tip_treninga
+            </div>
+            <div>
+                @item.Fitnes_centar
+            </div>
+            <div>
+                @item.Trajanje_treninga
+            </div>
+            <div>
+                @item.Datum_i_vreme_treninga
+            </div>
+            <div>
+                @item.Maksimalan_broj_posetilaca
+            </div>
+            <div>
+                @if (item.Spisak_posetilaca.Count == 0)
+                {
+                    <p>Trenutna Nemate Nijednog Posetioca</p>
+                }
+                else
+                {
+                    <select>
+
+                        @foreach (var pos in item.Spisak_posetilaca)
+                        {
+                            <option>@pos</option>
+                        }
+                    </select>
+                }
+            </div>
+            <div>
+                <form method="post" action="~/Posetilac/Prijava">
+                    <input type="submit" id="submit" value="Prijava" />
+                    <input type="hidden" value="@item.Id" name="id" />
+                </form>
+            </div>
+        </div>
+    }
+
+</div>

@@ -1,0 +1,49 @@
+﻿@using WebFitnCent.Models
+
+
+<link href="~/Css/Pregled.css" rel="stylesheet" type="text/css" />
+
+<div class="container">
+    <h1>Pogledaj Svoje Fitnes Centre</h1>
+    <a href="~/Neprijavljeni/Opcije">Povratak na Opcije</a>
+    <div>
+        <div>
+            Id
+        </div>
+        <div>
+            Naziv
+        </div>
+        <div>
+            Adresa
+        </div>
+        <div>
+            Godina Otvaranja
+        </div>
+    </div>
+    @foreach (var item in (List<FitnesCentar>)ViewData["fitnesCentriZaPrikaz"])
+    {
+        <div>
+            <div>
+                @item.Id
+                
+            </div>
+            <div>
+                @item.Naziv
+            </div>
+            <div>
+                @item.Adresa
+            </div>
+            <div>
+                @item.Godina_otvaranja
+            </div>
+            <div>
+                <form method="post" action="~/Posetilac/DetaljnijiPrikaz">
+                    <input type="submit" id="submit" value="Detalji" />
+                    <input type="hidden" value="@item.Id" name="id" />
+                </form>
+            </div>
+        </div>
+    }
+
+</div>
+
